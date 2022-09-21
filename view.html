@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인회생 자가진단 테스트</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#성별연락처">
+        시작하기
+    </button>
+
+    <!-- Modal -->
+    <form action="control.php" method="post">
+        <!-- ------------------------성별, 연락처------------------------ -->
+        <div class="modal fade" id="성별연락처" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 상담 받으실 정보 입력</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div>월 변제예정액과 예상 총비용을 확인하시려면, 아래 정보를 입력해 주십시오</div>
+
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">1) 성별</span>
+                            <input type="checkbox" id="gender1" name="gender" value="남성"
+                                onclick="oneCheckbox(this.name)">
+                            <label class="btn btn-primary" for='gender1'>남성</label>
+                            <input type="checkbox" id="gender2" name="gender" value="여성"
+                                onclick="oneCheckbox(this.name)">
+                            <label class="btn btn-primary" for='gender2'>여성</label>
+                        </div>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">2) 연락처</span>
+                            <input type="text" name="phone" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-lg">
+                        </div>
+                        <div>개인정보정책</div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#혼인">다음으로</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------성별------------------------ -->
+        <div class="modal fade" id="성별" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하의 성별은?</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <button type="button" name="gender" value="1" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#주소">남성</button>
+                        <button type="button" name="gender" value="2" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#주소">여성</button> -->
+
+
+                        <!-- <input type="checkbox" id="gender1" name="gender" value="1" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='gender1' data-bs-toggle="modal"
+                            data-bs-target="#주소">남성</label>
+                        <input type="checkbox" id="gender2" name="gender" value="2" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='gender2' data-bs-toggle="modal"
+                            data-bs-target="#주소">여성</label> -->
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#이름연락처">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        </div>
+        <!-- ------------------------주소------------------------ -->
+        <div class="modal fade" id="주소" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하의 거주지역은?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <input type="text" name="address1" class="form-control" placeholder="시" aria-label="시">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="address2" class="form-control" placeholder="구" aria-label="구">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="address3" class="form-control" placeholder="동" aria-label="동">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#성별">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#혼인">다음으로</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------혼인------------------------ -->
+        <div class="modal fade" id="혼인" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하의 혼인 유무는?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <input type="checkbox" id="marrige1" name="marrige" value="미혼" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='marrige1' data-bs-toggle="modal"
+                            data-bs-target="#자녀">미혼</label>
+                        <input type="checkbox" id="marrige2" name="marrige" value="기혼" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='marrige2' data-bs-toggle="modal"
+                            data-bs-target="#자녀">기혼</label>
+                        <input type="checkbox" id="marrige3" name="marrige" value="이혼" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='marrige3' data-bs-toggle="modal"
+                            data-bs-target="#자녀">이혼</label>
+                        <input type="checkbox" id="marrige4" name="marrige" value="기타" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='marrige4' data-bs-toggle="modal"
+                            data-bs-target="#자녀">기타</label>
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#성별연락처">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------자녀------------------------ -->
+        <div class="modal fade" id="자녀" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하는 부양기준 자녀(만 19세 미만)가 있습니까?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="checkbox" id="child1" name="child" value="없음" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='child1' data-bs-toggle="modal"
+                            data-bs-target="#채권1">없음</label>
+                        <input type="checkbox" id="child2" name="child" value="1인" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='child2' data-bs-toggle="modal"
+                            data-bs-target="#채권1">1인</label>
+                        <input type="checkbox" id="child3" name="child" value="2인" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='child3' data-bs-toggle="modal"
+                            data-bs-target="#채권1">2인</label>
+                        <input type="checkbox" id="child4" name="child" value="3인" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='child4' data-bs-toggle="modal"
+                            data-bs-target="#채권1">3인</label>
+                        <input type="checkbox" id="child5" name="child" value="4인" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='child5' data-bs-toggle="modal"
+                            data-bs-target="#채권1">4인</label>
+                        <input type="checkbox" id="child6" name="child" value="5인 이상" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='child6' data-bs-toggle="modal" data-bs-target="#채권1">5인
+                            이상</label>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#혼인">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------채권1------------------------ -->
+        <div class="modal fade" id="채권1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하의 총 채권자 수는? (금융권, 비금융권, 미납세금, 개인채권 등)
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">채권자수 :</span>
+                            <input type="number" class="form-control" name="creditor1"
+                                aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">개</span>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#채권2">다음으로</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#자녀">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--------------------------채권2-------------------------->
+        <div class="modal fade" id="채권2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하의 무담보 채무액은? <br>(금융권, 비금융권, 미납세금, 물품대금, 개인채권
+                            등 포함)</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">총 :</span>
+                            <input type="number" class="form-control" name="creditor2"
+                                aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">만원</span>
+                        </div>
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하의 담보 채무액은?<br>(잘 모르실 경우, 모두 무담보 채무액으로 입력해
+                            주시기 바랍니다.)</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">총 :</span>
+                            <input type="number" class="form-control" name="creditor3"
+                                aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">만원</span>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#재산1">다음으로</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#채권1">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------재산1------------------------ -->
+        <div class="modal fade" id="재산1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하의 현 거주지 거주 형태는?
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <input type="checkbox" id="property1-1" name="property1" value="자가"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property1-1' data-bs-toggle="modal"
+                            data-bs-target="#재산2">자가</label>
+                        <input type="checkbox" id="property1-2" name="property1" value="전세"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property1-2' data-bs-toggle="modal"
+                            data-bs-target="#재산4">전세</label>
+                        <input type="checkbox" id="property1-3" name="property1" value="월세"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property1-3' data-bs-toggle="modal"
+                            data-bs-target="#재산4">월세</label>
+                        <input type="checkbox" id="property1-4" name="property1" value="무상거주"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property1-4' data-bs-toggle="modal"
+                            data-bs-target="#재산7">무상거주</label>
+                        <input type="checkbox" id="property1-5" name="property1" value="기타"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property1-5' data-bs-toggle="modal"
+                            data-bs-target="#재산7">기타</label>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#채권2">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------재산2------------------------ -->
+        <div class="modal fade" id="재산2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 자가의 경우, 부동산의 실소유자는?
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <input type="checkbox" id="property2-1" name="property2" value="본인"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property2-1' data-bs-toggle="modal"
+                            data-bs-target="#재산3">본인</label>
+                        <input type="checkbox" id="property2-2" name="property2" value="배우자"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property2-2' data-bs-toggle="modal"
+                            data-bs-target="#재산3">배우자</label>
+                        <input type="checkbox" id="property2-3" name="property2" value="기타 가족"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property2-3' data-bs-toggle="modal" data-bs-target="#재산3">기타
+                            가족</label>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#재산1">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------재산3------------------------ -->
+        <div class="modal fade" id="재산3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하의 부동산 시세는? (최근 실거래가 또는 KB부동산시세)
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">시세 :</span>
+                            <input type="number" class="form-control" name="property3"
+                                aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">만원</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#재산7">다음으로</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#재산2">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------재산4------------------------ -->
+        <div class="modal fade" id="재산4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 전월세 경우, 계약자는?
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <input type="checkbox" id="property4-1" name="property4" value="본인"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property4-1' data-bs-toggle="modal"
+                            data-bs-target="#재산5">본인</label>
+                        <input type="checkbox" id="property4-2" name="property4" value="배우자"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property4-2' data-bs-toggle="modal"
+                            data-bs-target="#재산5">배우자</label>
+                        <input type="checkbox" id="property4-3" name="property4" value="기타
+                        가족" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property4-3' data-bs-toggle="modal" data-bs-target="#재산5">기타
+                            가족</label>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#재산1">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ------------------------재산5------------------------ -->
+        <div class="modal fade" id="재산5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 전월세 경우, 현재 보증금액과 월세는?
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">전세보증금 :</span>
+                            <input type="number" class="form-control" name="property5"
+                                aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">만원</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">월세 :</span>
+                            <input type="number" class="form-control" name="property5"
+                                aria-label="Amount (to the nearest dollar)">
+                            <span class="input-group-text">만원</span>
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#재산6">다음으로</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#재산4">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ------------------------재산6------------------------ -->
+        <div class="modal fade" id="재산6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 전월세 보증금의 담보대출이 있으면 총 금액은?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Recipient's username" name="property6"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text" id="basic-addon2">만원</span>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#재산7">다음으로</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#재산5">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------재산7------------------------ -->
+        <div class="modal fade" id="재산7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하는 차량을 소유하고 계신가요?
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <input type="checkbox" id="property7-1" name="property7" value="본인"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property7-1' data-bs-toggle="modal"
+                            data-bs-target="#재산8">본인</label>
+                        <input type="checkbox" id="property7-2" name="property7" value="배우자"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property7-2' data-bs-toggle="modal"
+                            data-bs-target="#재산8">배우자</label>
+                        <input type="checkbox" id="property7-3" name="property7" value="기타
+                        가족" onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property7-3' data-bs-toggle="modal" data-bs-target="#재산8">기타
+                            가족</label>
+                        <input type="checkbox" id="property7-4" name="property7" value="아니오"
+                            onclick="oneCheckbox(this.name)">
+                        <label class="btn btn-primary" for='property7-4' data-bs-toggle="modal"
+                            data-bs-target="#재산8">아니오</label>
+
+
+                        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#재산8">본인<input value="본인" name="property7" hidden></button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#재산8">배우자<input value="배우자" name="property7" hidden></button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#재산8">기타
+                            가족<input value="기타 가족" name="property7" hidden></button>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#재산8">아니오
+                            <input value="기타 가족" name="property7" hidden></button> -->
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#재산1">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------재산8------------------------ -->
+        <div class="modal fade" id="재산8" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Q. 귀하의 자동차 시세는?</h5><br>
+                        (Tip: 보험증권 가액으로 입력 바랍니다. 담보대출 있을 시 담보대출 금액을 차감한 금액임)
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Recipient's username" name="property8"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text" id="basic-addon2">만원</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#">다음으로</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#재산7">←
+                            이전단계로</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">X 닫기</button>
+                    </div>
+                    <div>
+                        <button type="submit">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div>
+            <button type="submit">저장</button>
+        </div> -->
+    </form>
+
+</body>
+<script>
+
+    function oneCheckbox(name) {
+        const getName = document.querySelectorAll(`[name="${name}"]`);
+
+        for (let i = 0; i < getName.length; i++) {
+            getName[i].addEventListener("click", () => {
+                for (let j = 0; j < getName.length; j++) {
+                    if (getName[i].checked === true) {
+                        getName[j].checked = false;
+                        getName[i].checked = true;
+                    }
+                }
+            })
+
+        }
+
+        console.log();
+    }
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+</html>
