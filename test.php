@@ -17,13 +17,24 @@ $dsn = "mysql:host={$host};dbname={$dbName};charset={$dbChar}";
 
 $pdo = new PDO($dsn, $user, $pass);
 // $sql = "SELECT * FROM test;";
-$sql = "INSERT INTO test (VALUE1, VALUE2, VALUE3) VALUES (1,2,3)";
+// $sql = "INSERT INTO test (VALUE1, VALUE2, VALUE3) VALUES (1,2,3)";
+$a = '"';    
+$sql = "SELECT *
+        INTO OUTFILE 'C:/Users/com/Desktop/test.csv'
+        FIELDS TERMINATED BY ','
+        ENCLOSED BY '$a'
+        ESCAPED BY '\\'
+        LINES TERMINATED BY '\n'
+        FROM test";
 $stmt = $pdo->prepare($sql);
-$stmt->execute();
+$result = $stmt->execute();
 
-$row = $stmt->fetch();
+// $row = $stmt->fetch();
 
-print_r($row);
+// print_r($row);
+
+if($result){
+    echo "추출성공";
+}
 
 ?>
-
